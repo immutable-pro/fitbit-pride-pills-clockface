@@ -35,7 +35,7 @@ class ActiveMinutesMonitor {
 
   public get activeMinutes() {
     return appbit.permissions.granted("access_activity")
-      ? today.adjusted.activeZoneMinutes.total
+      ? today.local.activeZoneMinutes.total
       : null;
   }
 

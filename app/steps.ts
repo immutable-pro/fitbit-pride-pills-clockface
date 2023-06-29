@@ -35,7 +35,7 @@ class StepsMonitor {
 
   public get steps() {
     return appbit.permissions.granted("access_activity")
-      ? today.adjusted.steps
+      ? today.local.steps
       : null;
   }
 
