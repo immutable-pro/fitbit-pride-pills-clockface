@@ -19,21 +19,19 @@ class HeartRateMonitor {
   }
 
   public start() {
-    console.log("HeartRateMonitor::start()");
-    this._hrm?.start();
+    !this._hrm?.activated && this._hrm?.start();
   }
 
   public stop() {
-    console.log("HeartRateMonitor::stop()");
-    this._hrm?.stop();
-  }
-
-  public get hrm() {
-    return this._hrm;
+    this._hrm?.activated && this._hrm?.stop();
   }
 
   public get heartRate() {
     return this._hrm?.heartRate;
+  }
+
+  public subscribe(callback: () => void) {
+    this._hrm?.addEventListener("reading", callback);
   }
 }
 
@@ -49,7 +47,7 @@ export const setupHeartRateSensor = () => {
   if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
     const body = new BodyPresenceSensor();
 
-    GlobalHeartRateMonitor.hrm.addEventListener("reading", () => {
+    GlobalHeartRateMonitor.subscribe(() => {
       updateHeartRateText(GlobalHeartRateMonitor.heartRate);
     });
 
