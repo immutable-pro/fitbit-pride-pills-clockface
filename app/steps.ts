@@ -2,7 +2,7 @@ import { me as appbit } from "appbit";
 import { today } from "user-activity";
 import document from "document";
 import { display } from "display";
-import { isAnyStepsComplicationActive } from "./state";
+import { GlobalState, isAnyStepsComplicationActive } from "./state";
 
 class StepsMonitor {
   private _frequencyMs: number;
@@ -63,7 +63,7 @@ export const setupStepsSensor = () => {
 
   display.addEventListener("change", () => {
     // Automatically stop the sensor when the screen is off to conserve battery
-    display.on && isAnyStepsComplicationActive()
+    display.on && isAnyStepsComplicationActive() && GlobalState.isOnBody
       ? GlobalStepsMonitor.start()
       : GlobalStepsMonitor.stop();
   });

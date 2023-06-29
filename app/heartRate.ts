@@ -2,7 +2,7 @@ import { me as appbit } from "appbit";
 import { HeartRateSensor } from "heart-rate";
 import { display } from "display";
 import document from "document";
-import { isAnyHearRateComplicationActive } from "./state";
+import { GlobalState, isAnyHearRateComplicationActive } from "./state";
 
 class HeartRateMonitor {
   private _hrm: HeartRateSensor | null;
@@ -47,7 +47,7 @@ export const setupHeartRateSensor = () => {
   });
 
   display.addEventListener("change", (_event) => {
-    display.on && isAnyHearRateComplicationActive()
+    display.on && isAnyHearRateComplicationActive() && GlobalState.isOnBody
       ? GlobalHeartRateMonitor.start()
       : GlobalHeartRateMonitor.stop();
   });

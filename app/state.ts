@@ -8,6 +8,7 @@ export type Complication =
   | "floors";
 
 export type State = {
+  isOnBody: boolean;
   activeComplicationIndex: number;
   readonly length: number;
 };
@@ -23,6 +24,7 @@ export const Complications: Complication[] = [
 ];
 
 export const GlobalState: State = {
+  isOnBody: true,
   activeComplicationIndex: 0,
   length: Complications.length,
 };

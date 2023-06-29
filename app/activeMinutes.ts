@@ -2,7 +2,7 @@ import { me as appbit } from "appbit";
 import { today } from "user-activity";
 import document from "document";
 import { display } from "display";
-import { isAnyActiveMinutesComplicationActive } from "./state";
+import { GlobalState, isAnyActiveMinutesComplicationActive } from "./state";
 
 class ActiveMinutesMonitor {
   private _frequencyMs: number;
@@ -63,7 +63,7 @@ export const setupActiveMinutesSensor = () => {
   GlobalActiveMinutesMonitor.subscribe(updateActiveMinutes);
 
   display.addEventListener("change", () => {
-    display.on && isAnyActiveMinutesComplicationActive()
+    display.on && isAnyActiveMinutesComplicationActive() && GlobalState.isOnBody
       ? GlobalActiveMinutesMonitor.start()
       : GlobalActiveMinutesMonitor.stop();
   });

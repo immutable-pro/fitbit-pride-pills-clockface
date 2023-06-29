@@ -24,15 +24,15 @@ export const updateDisplay = () => {
 };
 
 export const updateSensors = () => {
-  isAnyHearRateComplicationActive()
+  isAnyHearRateComplicationActive() && GlobalState.isOnBody
     ? GlobalHeartRateMonitor.start()
     : GlobalHeartRateMonitor.stop();
 
-  isAnyActiveMinutesComplicationActive()
+  isAnyActiveMinutesComplicationActive() && GlobalState.isOnBody
     ? GlobalActiveMinutesMonitor.start()
     : GlobalActiveMinutesMonitor.stop();
 
-  isAnyStepsComplicationActive()
+  isAnyStepsComplicationActive() && GlobalState.isOnBody
     ? GlobalStepsMonitor.start()
     : GlobalStepsMonitor.stop();
 };
@@ -87,7 +87,14 @@ export const setupTouchEvents = () => {
 export const setupBodySensor = () => {
   if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
     const body = new BodyPresenceSensor();
-    body.start();
+
+    body.addEventListener("reading", (_event) => {
+      console.log(
+        `The device is${body.present ? "" : " not"} on the user's body.`
+      );
+      GlobalState.isOnBody = body.present;
+      updateSensors();
+    });
 
     display.addEventListener("change", (_event) => {
       if (display.on) {
@@ -96,5 +103,7 @@ export const setupBodySensor = () => {
         body.stop();
       }
     });
+
+    body.start();
   }
 };
