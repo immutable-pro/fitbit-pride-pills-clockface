@@ -1,5 +1,11 @@
-import * as _drawHandles from './drawHandles';
-import * as _colorize from "./colorize";
-import * as _events from './events';
+import { fillPillColors } from "./pills";
+import { setupHands } from "./hands";
+import { setupTouchEvents } from "./events";
 
-console.log('index.ts loaded');
+console.log("Initializing app...");
+
+fillPillColors();
+setupHands();
+setupTouchEvents();
+
+console.log("App initialized!");
