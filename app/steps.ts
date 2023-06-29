@@ -1,7 +1,6 @@
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
 import document from "document";
-import { BodyPresenceSensor } from "body-presence";
 import { display } from "display";
 import { isAnyStepsComplicationActive } from "./state";
 
@@ -60,28 +59,12 @@ const updateSteps = (newValue: number | null) => {
 export const GlobalStepsMonitor = new StepsMonitor(1000);
 
 export const setupStepsSensor = () => {
-  if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
-    const body = new BodyPresenceSensor();
+  GlobalStepsMonitor.subscribe(updateSteps);
 
-    GlobalStepsMonitor.subscribe(updateSteps);
-
-    body.addEventListener("reading", () => {
-      if (body.present && display.on && isAnyStepsComplicationActive()) {
-        GlobalStepsMonitor.start();
-      } else {
-        GlobalStepsMonitor.stop();
-      }
-    });
-
-    display.addEventListener("change", () => {
-      // Automatically stop the sensor when the screen is off to conserve battery
-      display.on && isAnyStepsComplicationActive()
-        ? GlobalStepsMonitor.start()
-        : GlobalStepsMonitor.stop();
-    });
-
-    body.start();
-  } else {
-    updateSteps(null);
-  }
+  display.addEventListener("change", () => {
+    // Automatically stop the sensor when the screen is off to conserve battery
+    display.on && isAnyStepsComplicationActive()
+      ? GlobalStepsMonitor.start()
+      : GlobalStepsMonitor.stop();
+  });
 };

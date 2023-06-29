@@ -1,7 +1,6 @@
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
 import document from "document";
-import { BodyPresenceSensor } from "body-presence";
 import { display } from "display";
 import { isAnyActiveMinutesComplicationActive } from "./state";
 
@@ -61,32 +60,11 @@ const updateActiveMinutes = (newValue: number | null) => {
 export const GlobalActiveMinutesMonitor = new ActiveMinutesMonitor(60 * 1000);
 
 export const setupActiveMinutesSensor = () => {
-  if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
-    const body = new BodyPresenceSensor();
+  GlobalActiveMinutesMonitor.subscribe(updateActiveMinutes);
 
-    GlobalActiveMinutesMonitor.subscribe(updateActiveMinutes);
-
-    body.addEventListener("reading", () => {
-      if (
-        body.present &&
-        display.on &&
-        isAnyActiveMinutesComplicationActive()
-      ) {
-        GlobalActiveMinutesMonitor.start();
-      } else {
-        GlobalActiveMinutesMonitor.stop();
-      }
-    });
-
-    display.addEventListener("change", () => {
-      // Automatically stop the sensor when the screen is off to conserve battery
-      display.on && isAnyActiveMinutesComplicationActive()
-        ? GlobalActiveMinutesMonitor.start()
-        : GlobalActiveMinutesMonitor.stop();
-    });
-
-    body.start();
-  } else {
-    updateActiveMinutes(null);
-  }
+  display.addEventListener("change", () => {
+    display.on && isAnyActiveMinutesComplicationActive()
+      ? GlobalActiveMinutesMonitor.start()
+      : GlobalActiveMinutesMonitor.stop();
+  });
 };

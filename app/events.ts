@@ -1,3 +1,4 @@
+import { me as appbit } from "appbit";
 import document from "document";
 import {
   Complications,
@@ -12,6 +13,8 @@ import {
 import { GlobalHeartRateMonitor } from "./heartRate";
 import { GlobalStepsMonitor } from "./steps";
 import { GlobalActiveMinutesMonitor } from "./activeMinutes";
+import { BodyPresenceSensor } from "body-presence";
+import { display } from "display";
 
 export const updateDisplay = () => {
   const complication = getActiveComplication();
@@ -79,4 +82,19 @@ export const setupTouchEvents = () => {
   document.getElementsByTagName("image").forEach((element) => {
     element.addEventListener("click", onClick);
   });
+};
+
+export const setupBodySensor = () => {
+  if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
+    const body = new BodyPresenceSensor();
+    body.start();
+
+    display.addEventListener("change", (_event) => {
+      if (display.on) {
+        body.start();
+      } else {
+        body.stop();
+      }
+    });
+  }
 };

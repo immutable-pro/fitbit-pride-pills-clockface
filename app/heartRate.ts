@@ -1,6 +1,5 @@
 import { me as appbit } from "appbit";
 import { HeartRateSensor } from "heart-rate";
-import { BodyPresenceSensor } from "body-presence";
 import { display } from "display";
 import document from "document";
 import { isAnyHearRateComplicationActive } from "./state";
@@ -10,7 +9,6 @@ class HeartRateMonitor {
 
   constructor(frequency: number) {
     this._hrm =
-      BodyPresenceSensor &&
       HeartRateSensor &&
       appbit.permissions.granted("access_activity") &&
       appbit.permissions.granted("access_heart_rate")
@@ -44,30 +42,13 @@ const updateHeartRateText = (newValue: number | null) => {
 };
 
 export const setupHeartRateSensor = () => {
-  if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
-    const body = new BodyPresenceSensor();
+  GlobalHeartRateMonitor.subscribe(() => {
+    updateHeartRateText(GlobalHeartRateMonitor.heartRate);
+  });
 
-    GlobalHeartRateMonitor.subscribe(() => {
-      updateHeartRateText(GlobalHeartRateMonitor.heartRate);
-    });
-
-    body.addEventListener("reading", () => {
-      if (body.present && display.on && isAnyHearRateComplicationActive()) {
-        GlobalHeartRateMonitor.start();
-      } else {
-        GlobalHeartRateMonitor.stop();
-      }
-    });
-
-    display.addEventListener("change", () => {
-      // Automatically stop the sensor when the screen is off to conserve battery
-      display.on && isAnyHearRateComplicationActive()
-        ? GlobalHeartRateMonitor.start()
-        : GlobalHeartRateMonitor.stop();
-    });
-
-    body.start();
-  } else {
-    updateHeartRateText(null);
-  }
+  display.addEventListener("change", (_event) => {
+    display.on && isAnyHearRateComplicationActive()
+      ? GlobalHeartRateMonitor.start()
+      : GlobalHeartRateMonitor.stop();
+  });
 };
