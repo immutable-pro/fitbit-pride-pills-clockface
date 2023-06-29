@@ -21,6 +21,6 @@ export const fillPillColors = () =>
     pill.style.fill = color;
     if (i === 6) {
       // Nine o'clock, black pill
-      pill.style.visibility = "hidden";
+      pill.style.display = "none";
     }
   });

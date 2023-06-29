@@ -38,8 +38,8 @@ const toggleComplicationVisibility = (currentComplication: Complication) => {
   document
     .getElementsByClassName("main-complication")
     .forEach((element: GraphicsElement) => {
-      element.style.visibility =
-        element.id === currentComplication ? "visible" : "hidden";
+      element.style.display =
+        element.id === currentComplication ? "inline" : "none";
     });
 };
 
@@ -47,8 +47,8 @@ const toggleMiniComplicationVisibility = (currentMiniComplication: string) => {
   document
     .getElementsByClassName("mini-complication")
     .forEach((element: GraphicsElement) => {
-      element.style.visibility =
-        element.id === currentMiniComplication ? "visible" : "hidden";
+      element.style.display =
+        element.id === currentMiniComplication ? "inline" : "none";
     });
 };
 

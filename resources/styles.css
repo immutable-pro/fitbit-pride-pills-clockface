@@ -3,9 +3,9 @@
 }
 
 .main-complication {
-  visibility: hidden;
+  display: none;
 }
 
 .mini-complication {
-  visibility: hidden;
+  display: none;
 }

@@ -46,10 +46,10 @@
   </g>
 
   <g id="time-mini" class="mini-complication">
-    <text id="date-mini-text" x="35" y="50%-4" fill="white" font-size="20" text-anchor="middle"
-      text-length="6">------</text>
-    <text id="time-mini-text" x="35" y="50%+19" fill="white" font-size="20" text-anchor="middle"
-      text-length="5">--:--</text>
+    <text id="date-mini-text" x="35" y="50%-4" fill="white" font-size="20" text-anchor="middle" text-length="6"
+      pointer-events="visible">------</text>
+    <text id="time-mini-text" x="35" y="50%+19" fill="white" font-size="20" text-anchor="middle" text-length="5"
+      pointer-events="visible">--:--</text>
   </g>
 
   <g id="heartRate" class="main-complication">
