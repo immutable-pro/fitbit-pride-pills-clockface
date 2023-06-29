@@ -1,7 +1,7 @@
 import document from "document";
 
 const colors = [
-  "#ff1e26",
+  "#ff1e26", // 3 o'clock, red
   "#f3941e",
   "#ffff00",
   "#06bd00",
@@ -16,7 +16,11 @@ const colors = [
 ];
 
 export const fillPillColors = () =>
-  colors.forEach(
-    (color, i) =>
-      ((document.getElementById(`pill-${i}`) as LineElement).style.fill = color)
-  );
+  colors.forEach((color, i) => {
+    const pill = document.getElementById(`pill-${i}`) as LineElement;
+    pill.style.fill = color;
+    if (i === 6) {
+      // Nine o'clock, black pill
+      pill.style.visibility = "hidden";
+    }
+  });

@@ -1,3 +1,11 @@
 #background {
   fill: black;
 }
+
+.main-complication {
+  visibility: hidden;
+}
+
+#hands {
+  visibility: visible;
+}
