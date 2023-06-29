@@ -9,11 +9,13 @@ import {
 } from "./state";
 import { GlobalHeartRateMonitor } from "./heartRate";
 
-const updateDisplay = () => {
+export const updateDisplay = () => {
   const complication = getActiveComplication();
   toggleComplicationVisibility(complication);
   const miniComplication = `${getNextComplication()}-mini`;
   toggleMiniComplicationVisibility(miniComplication);
+
+  // Non event driven data
 };
 
 export const updateSensors = () => {

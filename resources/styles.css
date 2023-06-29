@@ -6,6 +6,6 @@
   visibility: hidden;
 }
 
-#hands {
-  visibility: visible;
+.mini-complication {
+  visibility: hidden;
 }

@@ -35,3 +35,7 @@ export const getNextComplication = () =>
 export const isAnyHearRateComplicationActive = () =>
   getActiveComplication() === "heartRate" ||
   getNextComplication() === "heartRate";
+
+export const isAnyActiveMinutesComplicationActive = () =>
+  getActiveComplication() === "activeMinutes" ||
+  getNextComplication() === "activeMinutes";

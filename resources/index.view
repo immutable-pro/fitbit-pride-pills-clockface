@@ -54,7 +54,19 @@
   <g id="heartRate-mini" class="mini-complication">
     <image x="23" y="50%-23" height="20" width="24" href="mini-complication-heart.png" pointer-events="visible" />
     <text id="heartRate-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="3" font-weight="bold"
-      font-size="20" fill="white" pointer-events="visible">69</text>
+      font-size="20" fill="white" pointer-events="visible">--</text>
+  </g>
+
+  <g id="activeMinutes" class="main-complication">
+    <image x="50%-25" y="50%-55" height="50" width="49" href="main-complication-arrows.png" pointer-events="visible" />
+    <text id="activeMinutes-text" x="50%" y="50%+45" text-anchor="middle" text-length="3" font-weight="bold"
+      font-size="40" fill="#ffd800" pointer-events="visible">--</text>
+  </g>
+
+  <g id="activeMinutes-mini" class="mini-complication">
+    <image x="23" y="50%-23" height="20" width="24" href="mini-complication-arrows.png" pointer-events="visible" />
+    <text id="activeMinutes-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="3" font-weight="bold"
+      font-size="20" fill="white" pointer-events="visible">22</text>
   </g>
 
   <!-- DEBUG AXIS -->
