@@ -1,11 +1,11 @@
 export type Complication =
   | "hands"
   | "heartRate"
-  | "steps"
   | "activeMinutes"
   | "calories"
   | "distance"
-  | "stairs";
+  | "steps"
+  | "floors";
 
 export type State = {
   activeComplicationIndex: number;
@@ -15,10 +15,11 @@ export type State = {
 export const Complications: Complication[] = [
   "hands",
   "heartRate",
-  "activeMinutes",
-  "calories",
+  "steps",
   "distance",
-  "stairs",
+  "floors",
+  "calories",
+  "activeMinutes",
 ];
 
 export const GlobalState: State = {
@@ -39,3 +40,6 @@ export const isAnyHearRateComplicationActive = () =>
 export const isAnyActiveMinutesComplicationActive = () =>
   getActiveComplication() === "activeMinutes" ||
   getNextComplication() === "activeMinutes";
+
+export const isAnyStepsComplicationActive = () =>
+  getActiveComplication() === "steps" || getNextComplication() === "steps";

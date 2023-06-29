@@ -19,12 +19,10 @@ class HeartRateMonitor {
   }
 
   public start() {
-    console.log("starting hrm...");
     !this._hrm?.activated && this._hrm?.start();
   }
 
   public stop() {
-    console.log("stopping hrm...");
     this._hrm?.activated && this._hrm?.stop();
   }
 
@@ -40,7 +38,6 @@ class HeartRateMonitor {
 export const GlobalHeartRateMonitor = new HeartRateMonitor(3);
 
 const updateHeartRateText = (newValue: number | null) => {
-  console.log("new heart rate");
   const value = `${newValue ?? "--"}`;
   (document.getElementById("heartRate-text") as TextElement).text = value;
   (document.getElementById("heartRate-mini-text") as TextElement).text = value;
@@ -58,7 +55,7 @@ export const setupHeartRateSensor = () => {
       if (body.present && display.on && isAnyHearRateComplicationActive()) {
         GlobalHeartRateMonitor.start();
       } else {
-        GlobalHeartRateMonitor.start();
+        GlobalHeartRateMonitor.stop();
       }
     });
 

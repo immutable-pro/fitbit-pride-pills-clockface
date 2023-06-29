@@ -6,27 +6,32 @@ import {
   getActiveComplication,
   getNextComplication,
   isAnyHearRateComplicationActive,
+  isAnyStepsComplicationActive,
+  isAnyActiveMinutesComplicationActive,
 } from "./state";
 import { GlobalHeartRateMonitor } from "./heartRate";
+import { GlobalStepsMonitor } from "./steps";
+import { GlobalActiveMinutesMonitor } from "./activeMinutes";
 
 export const updateDisplay = () => {
   const complication = getActiveComplication();
   toggleComplicationVisibility(complication);
   const miniComplication = `${getNextComplication()}-mini`;
   toggleMiniComplicationVisibility(miniComplication);
-
-  // Non event driven data
 };
 
 export const updateSensors = () => {
-  const complication = getActiveComplication();
-  const miniComplication = getNextComplication();
-
-  console.log(`Activating sensors for: ${complication} & ${miniComplication}`);
-
   isAnyHearRateComplicationActive()
     ? GlobalHeartRateMonitor.start()
     : GlobalHeartRateMonitor.stop();
+
+  isAnyActiveMinutesComplicationActive()
+    ? GlobalActiveMinutesMonitor.start()
+    : GlobalActiveMinutesMonitor.stop();
+
+  isAnyStepsComplicationActive()
+    ? GlobalStepsMonitor.start()
+    : GlobalStepsMonitor.stop();
 };
 
 const toggleComplicationVisibility = (currentComplication: Complication) => {

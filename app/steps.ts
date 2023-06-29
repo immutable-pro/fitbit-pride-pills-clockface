@@ -3,19 +3,19 @@ import { today } from "user-activity";
 import document from "document";
 import { BodyPresenceSensor } from "body-presence";
 import { display } from "display";
-import { isAnyActiveMinutesComplicationActive } from "./state";
+import { isAnyStepsComplicationActive } from "./state";
 
-class ActiveMinutesMonitor {
+class StepsMonitor {
   private _frequencyMs: number;
   private _updateInterval: number | null = null;
-  private _callbacks: ((activeMinutes: number | null) => void)[] = [];
+  private _callbacks: ((steps: number | null) => void)[] = [];
 
   constructor(frequencyMs: number) {
     this._frequencyMs = frequencyMs;
   }
 
   public start() {
-    console.log("Starting activeMinutes monitor...");
+    console.log("Starting steps monitor...");
     this.notify();
     if (!this._updateInterval) {
       this._updateInterval = setInterval(
@@ -26,67 +26,62 @@ class ActiveMinutesMonitor {
   }
 
   public stop() {
-    console.log("Stopping activeMinutes monitor...");
+    console.log("Stopping steps monitor...");
     if (this._updateInterval) {
       clearInterval(this._updateInterval);
       this._updateInterval = null;
     }
   }
 
-  public get activeMinutes() {
+  public get steps() {
     return appbit.permissions.granted("access_activity")
-      ? today.adjusted.activeZoneMinutes.total
+      ? today.adjusted.steps
       : null;
   }
 
-  public subscribe(callback: (activeMinutes: number | null) => void) {
+  public subscribe(callback: (steps: number | null) => void) {
     this._callbacks.push(callback);
   }
 
   private notify() {
     this._callbacks.forEach((cb) => {
-      cb(this.activeMinutes);
+      cb(this.steps);
     });
   }
 }
 
-const updateActiveMinutes = (newValue: number | null) => {
-  console.log("updating activeMinutes...");
+const updateSteps = (newValue: number | null) => {
+  console.log("updating steps...");
   const value = `${newValue ?? "--"}`;
-  (document.getElementById("activeMinutes-text") as TextElement).text = value;
-  (document.getElementById("activeMinutes-mini-text") as TextElement).text =
-    value;
+  (document.getElementById("steps-text") as TextElement).text = value;
+  (document.getElementById("steps-mini-text") as TextElement).text = value;
 };
 
-export const GlobalActiveMinutesMonitor = new ActiveMinutesMonitor(60 * 1000);
+export const GlobalStepsMonitor = new StepsMonitor(1000);
 
-export const setupActiveMinutesSensor = () => {
+export const setupStepsSensor = () => {
   if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
     const body = new BodyPresenceSensor();
 
-    GlobalActiveMinutesMonitor.subscribe(updateActiveMinutes);
+    GlobalStepsMonitor.subscribe(updateSteps);
 
     body.addEventListener("reading", () => {
-      if (
-        body.present &&
-        display.on &&
-        isAnyActiveMinutesComplicationActive()
-      ) {
-        GlobalActiveMinutesMonitor.start();
+      if (body.present && display.on && isAnyStepsComplicationActive()) {
+        GlobalStepsMonitor.start();
       } else {
-        GlobalActiveMinutesMonitor.stop();
+        GlobalStepsMonitor.stop();
       }
     });
 
     display.addEventListener("change", () => {
       // Automatically stop the sensor when the screen is off to conserve battery
-      display.on && isAnyActiveMinutesComplicationActive()
-        ? GlobalActiveMinutesMonitor.start()
-        : GlobalActiveMinutesMonitor.stop();
+      display.on && isAnyStepsComplicationActive()
+        ? GlobalStepsMonitor.start()
+        : GlobalStepsMonitor.stop();
     });
 
     body.start();
   } else {
-    updateActiveMinutes(null);
+    updateSteps(null);
   }
 };

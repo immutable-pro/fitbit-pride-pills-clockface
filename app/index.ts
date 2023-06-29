@@ -2,7 +2,8 @@ import { fillPillColors } from "./pills";
 import { setupHands } from "./hands";
 import { setupTouchEvents, updateDisplay, updateSensors } from "./events";
 import { setupHeartRateSensor } from "./heartRate";
-import { setupActiveZoneMinutes } from "./activeMinutes";
+import { setupStepsSensor } from "./steps";
+import { setupActiveMinutesSensor } from "./activeMinutes";
 
 console.log("Initializing app...");
 
@@ -10,7 +11,8 @@ fillPillColors();
 setupHands();
 setupTouchEvents();
 setupHeartRateSensor();
-setupActiveZoneMinutes();
+setupActiveMinutesSensor();
+setupStepsSensor();
 
 updateSensors();
 updateDisplay();
