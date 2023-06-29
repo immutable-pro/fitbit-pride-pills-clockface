@@ -1,11 +1,11 @@
 import clock from "clock";
-import * as document from "document";
+import document from "document";
 
 // Tick every second
 clock.granularity = "seconds";
 
-let hourHand = document.getElementById("hours");
-let minHand = document.getElementById("mins");
+let hourHand = document.getElementById("hours") as GroupElement;
+let minHand = document.getElementById("mins") as GroupElement;
 
 // Returns an angle (0-360) for the current hour in the day, including minutes
 function hoursToAngle(hours, minutes) {

@@ -1,4 +1,4 @@
-import * as document from "document";
+import document from "document";
 
 const colors = [
     "#ff1e26",
@@ -16,4 +16,4 @@ const colors = [
 ];
 
 // Set the fill colors of the pills
-colors.forEach((color, i) => document.getElementById(`pill-${i}`).style.fill = color);
+colors.forEach((color, i) => (document.getElementById(`pill-${i}`) as LineElement).style.fill = color);

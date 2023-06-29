@@ -1,4 +1,4 @@
-import * as document from "document";
+import document from "document";
 
 const onClick = (_evt) => console.log('click');
 
