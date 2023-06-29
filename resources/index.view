@@ -28,7 +28,7 @@
       pointer-events="visible" />
   </g>
 
-  <g id="hands" class="main-complication">
+  <g id="time" class="main-complication">
     <g id="circles">
       <circle cx="50%" cy="50%" r="25" fill="#ffd800" pointer-events="visible" />
       <circle cx="50%" cy="50%" r="17" fill="#7902aa" pointer-events="visible" />
@@ -43,6 +43,13 @@
         pointer-events="visible" />
     </g>
     <circle cx="50%" cy="50%" r="10" fill="#ffd800" pointer-events="visible" />
+  </g>
+
+  <g id="time-mini" class="mini-complication">
+    <text id="date-mini-text" x="35" y="50%-4" fill="white" font-size="20" text-anchor="middle"
+      text-length="6">------</text>
+    <text id="time-mini-text" x="35" y="50%+19" fill="white" font-size="20" text-anchor="middle"
+      text-length="5">--:--</text>
   </g>
 
   <g id="heartRate" class="main-complication">

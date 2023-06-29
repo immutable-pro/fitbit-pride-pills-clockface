@@ -1,5 +1,5 @@
 export type Complication =
-  | "hands"
+  | "time"
   | "heartRate"
   | "activeMinutes"
   | "calories"
@@ -13,7 +13,7 @@ export type State = {
 };
 
 export const Complications: Complication[] = [
-  "hands",
+  "time",
   "heartRate",
   "steps",
   "distance",
