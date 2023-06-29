@@ -3,7 +3,7 @@ import { HeartRateSensor } from "heart-rate";
 import { BodyPresenceSensor } from "body-presence";
 import { display } from "display";
 import document from "document";
-import { getActiveComplication } from "./state";
+import { isAnyHearRateComplicationActive } from "./state";
 
 class HeartRateMonitor {
   private _hrm: HeartRateSensor | null;
@@ -19,10 +19,12 @@ class HeartRateMonitor {
   }
 
   public start() {
+    console.log("starting hrm...");
     !this._hrm?.activated && this._hrm?.start();
   }
 
   public stop() {
+    console.log("stopping hrm...");
     this._hrm?.activated && this._hrm?.stop();
   }
 
@@ -35,12 +37,13 @@ class HeartRateMonitor {
   }
 }
 
-export const GlobalHeartRateMonitor = new HeartRateMonitor(1);
+export const GlobalHeartRateMonitor = new HeartRateMonitor(3);
 
 const updateHeartRateText = (newValue: number | null) => {
-  (document.getElementById("heartRate-text") as TextElement).text = `${
-    newValue ?? "--"
-  }`;
+  console.log("new heart rate");
+  const value = `${newValue ?? "--"}`;
+  (document.getElementById("heartRate-text") as TextElement).text = value;
+  (document.getElementById("heartRate-mini-text") as TextElement).text = value;
 };
 
 export const setupHeartRateSensor = () => {
@@ -52,12 +55,8 @@ export const setupHeartRateSensor = () => {
     });
 
     body.addEventListener("reading", () => {
-      if (
-        !body.present ||
-        !display.on ||
-        getActiveComplication() !== "heartRate"
-      ) {
-        GlobalHeartRateMonitor.stop();
+      if (body.present && display.on && isAnyHearRateComplicationActive()) {
+        GlobalHeartRateMonitor.start();
       } else {
         GlobalHeartRateMonitor.start();
       }
@@ -65,7 +64,7 @@ export const setupHeartRateSensor = () => {
 
     display.addEventListener("change", () => {
       // Automatically stop the sensor when the screen is off to conserve battery
-      display.on && getActiveComplication() === "heartRate"
+      display.on && isAnyHearRateComplicationActive()
         ? GlobalHeartRateMonitor.start()
         : GlobalHeartRateMonitor.stop();
     });

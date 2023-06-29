@@ -28,3 +28,10 @@ export const GlobalState: State = {
 
 export const getActiveComplication = () =>
   Complications[GlobalState.activeComplicationIndex];
+
+export const getNextComplication = () =>
+  Complications[(GlobalState.activeComplicationIndex + 1) % GlobalState.length];
+
+export const isAnyHearRateComplicationActive = () =>
+  getActiveComplication() === "heartRate" ||
+  getNextComplication() === "heartRate";

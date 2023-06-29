@@ -4,32 +4,44 @@ import {
   GlobalState,
   Complication,
   getActiveComplication,
+  getNextComplication,
+  isAnyHearRateComplicationActive,
 } from "./state";
 import { GlobalHeartRateMonitor } from "./heartRate";
 
 const updateDisplay = () => {
   const complication = getActiveComplication();
-  toggleVisibility(complication);
+  toggleComplicationVisibility(complication);
+  const miniComplication = `${getNextComplication()}-mini`;
+  toggleMiniComplicationVisibility(miniComplication);
 };
 
-const updateSensors = () => {
+export const updateSensors = () => {
   const complication = getActiveComplication();
-  switch (complication) {
-    case "heartRate":
-      GlobalHeartRateMonitor.start();
-      break;
-    default:
-      GlobalHeartRateMonitor.stop();
-      break;
-  }
+  const miniComplication = getNextComplication();
+
+  console.log(`Activating sensors for: ${complication} & ${miniComplication}`);
+
+  isAnyHearRateComplicationActive()
+    ? GlobalHeartRateMonitor.start()
+    : GlobalHeartRateMonitor.stop();
 };
 
-const toggleVisibility = (currentComplication: Complication) => {
+const toggleComplicationVisibility = (currentComplication: Complication) => {
   document
     .getElementsByClassName("main-complication")
     .forEach((element: GraphicsElement) => {
       element.style.visibility =
         element.id === currentComplication ? "visible" : "hidden";
+    });
+};
+
+const toggleMiniComplicationVisibility = (currentMiniComplication: string) => {
+  document
+    .getElementsByClassName("mini-complication")
+    .forEach((element: GraphicsElement) => {
+      element.style.visibility =
+        element.id === currentMiniComplication ? "visible" : "hidden";
     });
 };
 
