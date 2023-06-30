@@ -3,9 +3,10 @@ import { today } from "user-activity";
 import document from "document";
 import { State } from "../state";
 import { Monitor } from "./monitors";
+import { log } from "../utils";
 
 const updateActiveMinutes = (newValue: number | null) => {
-  console.log("updating activeMinutes...");
+  log("Updating activeMinutes.");
   const value = `${newValue ?? "--"}`;
   (document.getElementById("activeMinutes-text") as TextElement).text = value;
   (document.getElementById("activeMinutes-mini-text") as TextElement).text =

@@ -2,6 +2,7 @@ import document from "document";
 import { Complication, Complications, State } from "./state";
 import { updateDisplay } from "./components/display";
 import { MonitorsRegistry } from "./monitors/monitors";
+import { log } from "./utils";
 
 const onClick = <T extends string | number, C extends Complication>(
   state: State,
@@ -10,7 +11,7 @@ const onClick = <T extends string | number, C extends Complication>(
   const prevState = { ...state };
   state.activeComplicationIndex =
     (state.activeComplicationIndex + 1) % state.length;
-  console.log(
+  log(
     `${Complications[prevState.activeComplicationIndex]} => ${
       Complications[state.activeComplicationIndex]
     }`

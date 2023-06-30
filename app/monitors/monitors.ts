@@ -1,5 +1,6 @@
 import { display } from "display";
 import { Complication, State } from "../state";
+import { log } from "../utils";
 
 export abstract class Monitor<T, C extends Complication> {
   protected readonly _state: State;
@@ -15,11 +16,11 @@ export abstract class Monitor<T, C extends Complication> {
   }
 
   public start() {
-    console.log(`Starting ${this.getComplicationName()} monitor.`);
+    log(`Starting ${this.getComplicationName()} monitor.`);
   }
 
   public stop() {
-    console.log(`Stopping ${this.getComplicationName()} monitor.`);
+    log(`Stopping ${this.getComplicationName()} monitor.`);
   }
 
   public abstract subscribe(callback: (value?: T, event?: Event) => void): void;

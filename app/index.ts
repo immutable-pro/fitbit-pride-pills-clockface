@@ -8,8 +8,9 @@ import { StepsMonitor } from "./monitors/steps";
 import { ActiveMinutesMonitor } from "./monitors/activeMinutes";
 import { State } from "./state";
 import { setupBodySensor } from "./monitors/bodySensor";
+import { log } from "./utils";
 
-console.log("Initializing app...");
+log("Initializing app...");
 
 fillPillColors();
 
@@ -33,4 +34,4 @@ setupTouchEvents(state, monitorsRegistry);
 monitorsRegistry.update();
 updateDisplay(state);
 
-console.log("App initialized!");
+log("App initialized!");

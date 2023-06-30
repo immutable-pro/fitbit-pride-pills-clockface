@@ -3,9 +3,10 @@ import { today } from "user-activity";
 import document from "document";
 import { State } from "../state";
 import { Monitor } from "./monitors";
+import { log } from "../utils";
 
 const updateSteps = (newValue: number | null) => {
-  console.log("updating steps...");
+  log("Updating steps.");
   const value = `${newValue ?? "--"}`;
   (document.getElementById("steps-text") as TextElement).text = value;
   (document.getElementById("steps-mini-text") as TextElement).text = value;

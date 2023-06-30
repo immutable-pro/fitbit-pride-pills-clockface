@@ -3,6 +3,7 @@ import { display } from "display";
 import { me as appbit } from "appbit";
 import { Complication, State } from "../state";
 import { MonitorsRegistry } from "./monitors";
+import { log } from "../utils";
 
 export const setupBodySensor = <
   T extends string | number,
@@ -15,9 +16,7 @@ export const setupBodySensor = <
     const body = new BodyPresenceSensor();
 
     body.addEventListener("reading", (_event) => {
-      console.log(
-        `The device is${body.present ? "" : " not"} on the user's body.`
-      );
+      log(`The device is${body.present ? "" : " not"} on the user's body.`);
       state.isOnBody = body.present;
       monitorsRegistry.update();
     });
