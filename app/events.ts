@@ -31,7 +31,7 @@ export const setupTouchEvents = <
     onClick(state, monitorsRegistry);
   };
 
-  document.getElementById("background").addEventListener("click", (_e) => {});
+  document.getElementById("background").addEventListener("click", listener);
   document.getElementsByTagName("line").forEach((element) => {
     element.addEventListener("click", listener);
   });

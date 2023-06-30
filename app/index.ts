@@ -9,6 +9,7 @@ import { ActiveMinutesMonitor } from "./monitors/activeMinutes";
 import { State } from "./state";
 import { setupBodySensor } from "./monitors/bodySensor";
 import { log } from "./utils";
+import { DistanceMonitor } from "./monitors/distance";
 
 log("Initializing app...");
 
@@ -27,6 +28,9 @@ monitorsRegistry.register(stepsMonitor);
 
 const activeMinutesMonitor = new ActiveMinutesMonitor(60 * 1000, state);
 monitorsRegistry.register(activeMinutesMonitor);
+
+const distanceMonitor = new DistanceMonitor(60 * 1000, state);
+monitorsRegistry.register(distanceMonitor);
 
 setupBodySensor(state, monitorsRegistry);
 setupTouchEvents(state, monitorsRegistry);
