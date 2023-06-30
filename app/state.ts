@@ -7,12 +7,6 @@ export type Complication =
   | "steps"
   | "floors";
 
-export type State = {
-  isOnBody: boolean;
-  activeComplicationIndex: number;
-  readonly length: number;
-};
-
 export const Complications: Complication[] = [
   "time",
   "heartRate",
@@ -23,25 +17,16 @@ export const Complications: Complication[] = [
   "activeMinutes",
 ];
 
-export const GlobalState: State = {
-  isOnBody: true,
-  activeComplicationIndex: 0,
-  length: Complications.length,
-};
+export class State {
+  public isOnBody: boolean = true;
+  public activeComplicationIndex: number = 0;
+  public readonly length: number = Complications.length;
 
-export const getActiveComplication = () =>
-  Complications[GlobalState.activeComplicationIndex];
+  public getActiveComplication() {
+    return Complications[this.activeComplicationIndex];
+  }
 
-export const getNextComplication = () =>
-  Complications[(GlobalState.activeComplicationIndex + 1) % GlobalState.length];
-
-export const isAnyHearRateComplicationActive = () =>
-  getActiveComplication() === "heartRate" ||
-  getNextComplication() === "heartRate";
-
-export const isAnyActiveMinutesComplicationActive = () =>
-  getActiveComplication() === "activeMinutes" ||
-  getNextComplication() === "activeMinutes";
-
-export const isAnyStepsComplicationActive = () =>
-  getActiveComplication() === "steps" || getNextComplication() === "steps";
+  public getNextComplication() {
+    return Complications[(this.activeComplicationIndex + 1) % this.length];
+  }
+}
