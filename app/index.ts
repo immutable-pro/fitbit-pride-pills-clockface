@@ -10,6 +10,7 @@ import { State } from "./state";
 import { setupBodySensor } from "./monitors/bodySensor";
 import { log } from "./utils";
 import { DistanceMonitor } from "./monitors/distance";
+import { FloorsMonitor } from "./monitors/floors";
 
 log("Initializing app...");
 
@@ -31,6 +32,9 @@ monitorsRegistry.register(activeMinutesMonitor);
 
 const distanceMonitor = new DistanceMonitor(60 * 1000, state);
 monitorsRegistry.register(distanceMonitor);
+
+const floorsMonitor = new FloorsMonitor(10 * 1000, state);
+monitorsRegistry.register(floorsMonitor);
 
 setupBodySensor(state, monitorsRegistry);
 setupTouchEvents(state, monitorsRegistry);
