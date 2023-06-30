@@ -47,7 +47,7 @@ export class DistanceMonitor extends Monitor<number, "distance"> {
 
   public getValue(): number {
     return appbit.permissions.granted("access_activity")
-      ? today.local.distance
+      ? today.adjusted.distance
       : null;
   }
 

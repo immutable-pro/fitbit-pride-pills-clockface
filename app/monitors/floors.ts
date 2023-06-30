@@ -43,7 +43,7 @@ export class FloorsMonitor extends Monitor<number, "floors"> {
 
   public getValue(): number {
     return appbit.permissions.granted("access_activity")
-      ? today.local.elevationGain
+      ? today.adjusted.elevationGain
       : null;
   }
 

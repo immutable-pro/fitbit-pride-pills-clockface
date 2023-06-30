@@ -26,7 +26,7 @@ export class ActiveMinutesMonitor extends Monitor<number, "activeMinutes"> {
 
   public getValue: () => number = () =>
     appbit.permissions.granted("access_activity")
-      ? today.local.activeZoneMinutes.total
+      ? today.adjusted.activeZoneMinutes.total
       : null;
 
   public getComplicationName: () => "activeMinutes" = () => "activeMinutes";

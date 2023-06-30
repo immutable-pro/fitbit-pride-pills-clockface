@@ -43,7 +43,7 @@ export class StepsMonitor extends Monitor<number, "steps"> {
 
   public getValue(): number {
     return appbit.permissions.granted("access_activity")
-      ? today.local.steps
+      ? today.adjusted.steps
       : null;
   }
 

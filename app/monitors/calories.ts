@@ -43,7 +43,7 @@ export class CaloriesMonitor extends Monitor<number, "calories"> {
 
   public getValue(): number {
     return appbit.permissions.granted("access_activity")
-      ? today.local.calories
+      ? today.adjusted.calories
       : null;
   }
 

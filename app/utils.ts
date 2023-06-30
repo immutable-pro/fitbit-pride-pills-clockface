@@ -5,7 +5,7 @@ export const zeroPad = (i: number) => {
   return `${i}`;
 };
 
-const ENABLE_LOGS = true;
+const ENABLE_LOGS = false;
 
 export const log: typeof console.log = (message, ...optionalParams) =>
   ENABLE_LOGS && console.log(message, ...optionalParams);
