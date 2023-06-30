@@ -102,15 +102,28 @@
   </g>
 
   <g id="floors" class="main-complication">
-    <image x="50%-20" y="50%-55" height="50" width="50" href="main-complication-floors.png" pointer-events="visible" />
+    <image x="50%-25" y="50%-55" height="50" width="50" href="main-complication-floors.png" pointer-events="visible" />
     <text id="floors-text" x="50%" y="50%+45" text-anchor="middle" text-length="6" font-weight="bold" font-size="40"
       fill="#ffd800" pointer-events="visible">--</text>
   </g>
 
   <g id="floors-mini" class="mini-complication">
-    <image x="26" y="50%-23" height="20" width="20" href="mini-complication-floors.png" pointer-events="visible" />
+    <image x="24" y="50%-23" height="20" width="20" href="mini-complication-floors.png" pointer-events="visible" />
     <text id="floors-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="6" font-weight="bold" font-size="20"
       fill="white" pointer-events="visible">--</text>
+  </g>
+
+  <g id="calories" class="main-complication">
+    <image x="50%-23" y="50%-55" height="50" width="47" href="main-complication-calories.png"
+      pointer-events="visible" />
+    <text id="calories-text" x="50%" y="50%+45" text-anchor="middle" text-length="6" font-weight="bold" font-size="40"
+      fill="#ffd800" pointer-events="visible">--</text>
+  </g>
+
+  <g id="calories-mini" class="mini-complication">
+    <image x="24" y="50%-23" height="20" width="20" href="mini-complication-calories.png" pointer-events="visible" />
+    <text id="calories-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="6" font-weight="bold"
+      font-size="20" fill="white" pointer-events="visible">--</text>
   </g>
 
   <!-- DEBUG AXIS -->

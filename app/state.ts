@@ -13,7 +13,7 @@ export const Complications: Complication[] = [
   "steps",
   "distance",
   "floors",
-  // "calories",
+  "calories",
   "activeMinutes",
 ];
 
