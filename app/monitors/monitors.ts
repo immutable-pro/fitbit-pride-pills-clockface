@@ -9,9 +9,7 @@ export abstract class Monitor<T, C extends Complication> {
     this._state = state;
 
     display.addEventListener("change", (_event) => {
-      display.on && this.isAnyComplicationActive() && this._state.isOnBody
-        ? this.start()
-        : this.stop();
+      this.canMonitorBeActive() ? this.start() : this.stop();
     });
   }
 
@@ -31,6 +29,15 @@ export abstract class Monitor<T, C extends Complication> {
     return (
       this._state.getActiveComplication() === this.getComplicationName() ||
       this._state.getNextComplication() === this.getComplicationName()
+    );
+  }
+
+  public canMonitorBeActive() {
+    return (
+      display.on &&
+      !this._state.isAodMode &&
+      this._state.isOnBody &&
+      this.isAnyComplicationActive()
     );
   }
 }
@@ -64,9 +71,7 @@ export class MonitorsRegistry<
 
   public update() {
     this._registry.forEach((monitor) => {
-      monitor.isAnyComplicationActive() && this._state.isOnBody
-        ? monitor.start()
-        : monitor.stop();
+      monitor.canMonitorBeActive() ? monitor.start() : monitor.stop();
     });
   }
 }

@@ -1,5 +1,4 @@
-import { fillPillColors } from "./components/pills";
-import { setupTime } from "./time";
+import { setupTime } from "./components/time";
 import { setupTouchEvents } from "./events";
 import { updateDisplay } from "./components/display";
 import { MonitorsRegistry } from "./monitors/monitors";
@@ -14,8 +13,6 @@ import { FloorsMonitor } from "./monitors/floors";
 import { CaloriesMonitor } from "./monitors/calories";
 
 log("Initializing app...");
-
-fillPillColors();
 
 setupTime();
 

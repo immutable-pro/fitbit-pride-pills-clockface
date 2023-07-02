@@ -1,7 +1,7 @@
 import clock, { TickEvent } from "clock";
 import document from "document";
-import { Days, Months, MonthsShort } from "./locales/en";
-import { zeroPad } from "./utils";
+import { Days, Months, MonthsShort } from "../locales/en";
+import { zeroPad } from "../utils";
 
 const hourHand = document.getElementById("hours") as GroupElement;
 const minHand = document.getElementById("mins") as GroupElement;

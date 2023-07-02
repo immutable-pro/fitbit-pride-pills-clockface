@@ -19,6 +19,7 @@ export const Complications: Complication[] = [
 
 export class State {
   public isOnBody: boolean = true;
+  public isAodMode: boolean = false;
   public activeComplicationIndex: number = 0;
   public readonly length: number = Complications.length;
 

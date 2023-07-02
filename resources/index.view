@@ -1,32 +1,6 @@
-<svg>
-  <rect id="background" x="0" y="0" width="100%" height="100%" pointer-events="visible" />
+<svg id="root" viewport-fill="black">
 
-  <g id="pills" pointer-events="visible">
-    <line id="pill-0" x1="50%+155" y1="50%+0" x2="50%+110" y2="50%+0" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-1" x1="50%+134" y1="50%+77" x2="50%+95" y2="50%+55" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-2" x1="50%+78" y1="50%+134" x2="50%+55" y2="50%+95" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-3" x1="50%+0" y1="50%+155" x2="50%+0" y2="50%+110" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-4" x1="50%+-77" y1="50%+134" x2="50%+-55" y2="50%+95" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-5" x1="50%+-134" y1="50%+77" x2="50%+-95" y2="50%+55" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-6" x1="50%+-155" y1="50%+0" x2="50%+-110" y2="50%+0" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-7" x1="50%+-134" y1="50%+-78" x2="50%+-95" y2="50%+-55" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-8" x1="50%+-78" y1="50%+-134" x2="50%+-55" y2="50%+-95" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-9" x1="50%+0" y1="50%+-155" x2="50%+0" y2="50%+-110" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-10" x1="50%+78" y1="50%+-134" x2="50%+55" y2="50%+-95" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-    <line id="pill-11" x1="50%+134" y1="50%+-78" x2="50%+95" y2="50%+-55" stroke-linecap="round" stroke-width="20"
-      pointer-events="visible" />
-  </g>
+  <image id="pills" href="pills.png" x="0" y="0" width="100%" height="100%" pointer-events="visible" />
 
   <g id="time" class="main-complication">
     <g id="circles">
@@ -131,18 +105,3 @@
   <line x1="0" x2="100%" y1="50%" y2="50%" fill="white" />
   <circle cx="50%" cy="50%" r="135" fill="white" opacity=".5" /> -->
 </svg>
-
-<!-- 
-      fill="#ff1e26" />
-      fill="#f3941e" />
-      fill="#ffff00" />
-      fill="#06bd00" />
-      fill="#001a98" />
-      fill="#760088" />
-      fill="#000000" />
-      fill="#603814" />
-      fill="#75d5eb" />
-      fill="#f6aab7" />
-      fill="#ffffff" />
-      fill="#55cdfd" />
-      -->
