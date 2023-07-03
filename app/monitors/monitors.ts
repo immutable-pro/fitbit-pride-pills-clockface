@@ -28,7 +28,7 @@ export abstract class Monitor<T, C extends Complication> {
   public isAnyComplicationActive(): boolean {
     return (
       this._state.getActiveComplication() === this.getComplicationName() ||
-      this._state.getNextComplication() === this.getComplicationName()
+      this._state.getActiveMiniComplication() === this.getComplicationName()
     );
   }
 

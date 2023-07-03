@@ -1,5 +1,5 @@
 import { setupTime } from "./components/time";
-import { setupTouchEvents } from "./events";
+import { setupCompanionMessages, setupTouchEvents } from "./events";
 import { updateDisplay } from "./components/display";
 import { MonitorsRegistry } from "./monitors/monitors";
 import { HeartRateMonitor } from "./monitors/heartRate";
@@ -38,7 +38,10 @@ const caloriesMonitor = new CaloriesMonitor(30 * 1000, state);
 monitorsRegistry.register(caloriesMonitor);
 
 setupBodySensor(state, monitorsRegistry);
+
 setupTouchEvents(state, monitorsRegistry);
+
+setupCompanionMessages(state);
 
 monitorsRegistry.update();
 updateDisplay(state);

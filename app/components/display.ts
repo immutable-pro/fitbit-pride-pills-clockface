@@ -15,5 +15,8 @@ const toggleVisibility = (
 
 export const updateDisplay = (state: State) => {
   toggleVisibility("main-complication", state.getActiveComplication());
-  toggleVisibility("mini-complication", `${state.getNextComplication()}-mini`);
+  toggleVisibility(
+    "mini-complication",
+    `${state.getActiveMiniComplication()}-mini`
+  );
 };

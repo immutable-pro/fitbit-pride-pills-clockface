@@ -17,7 +17,6 @@
     "wipeColor": "#ffffff",
     "requestedPermissions": [
       "access_activity",
-      "access_aod",
       "access_heart_rate"
     ],
     "buildTargets": [

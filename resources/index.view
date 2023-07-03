@@ -2,103 +2,99 @@
 
   <image id="pills" href="pills.png" x="0" y="0" width="100%" height="100%" pointer-events="visible" />
 
-  <g id="time" class="main-complication">
+  <svg id="time" class="main-complication" pointer-events="visible">
     <g id="circles">
-      <circle cx="50%" cy="50%" r="25" fill="#ffd800" pointer-events="visible" />
-      <circle cx="50%" cy="50%" r="17" fill="#7902aa" pointer-events="visible" />
+      <circle cx="50%" cy="50%" r="25" fill="#ffd800" />
+      <circle cx="50%" cy="50%" r="17" fill="#7902aa" />
     </g>
 
     <g id="mins" transform="translate(50%,50%)">
-      <line x1="0" y1="-110" x2="0" y2="0" stroke-width="8" stroke-linecap="round" fill="#e0e0e0"
-        pointer-events="visible" />
+      <line x1="0" y1="-110" x2="0" y2="0" stroke-width="8" stroke-linecap="round" fill="#e0e0e0" />
     </g>
     <g id="hours" transform="translate(50%,50%)">
-      <line x1="0" y1="-75" x2="0" y2="0" stroke-width="12" stroke-linecap="round" fill="#ffffff"
-        pointer-events="visible" />
+      <line x1="0" y1="-75" x2="0" y2="0" stroke-width="12" stroke-linecap="round" fill="#ffffff" />
     </g>
-    <circle cx="50%" cy="50%" r="10" fill="#ffd800" pointer-events="visible" />
-  </g>
+    <circle cx="50%" cy="50%" r="10" fill="#ffd800" />
+  </svg>
 
-  <g id="time-mini" class="mini-complication">
-    <text id="date-mini-text" x="35" y="50%-4" fill="white" font-size="20" text-anchor="middle" text-length="6"
-      pointer-events="visible">------</text>
-    <text id="time-mini-text" x="35" y="50%+19" fill="white" font-size="20" text-anchor="middle" text-length="5"
-      pointer-events="visible">--:--</text>
-  </g>
+  <svg id="time-mini" class="mini-complication" pointer-events="visible">
+    <text id="date-mini-text" x="35" y="50%-4" fill="white" font-size="20" text-anchor="middle"
+      text-length="6">------</text>
+    <text id="time-mini-text" x="35" y="50%+19" fill="white" font-size="20" text-anchor="middle"
+      text-length="5">--:--</text>
+  </svg>
 
-  <g id="heartRate" class="main-complication">
-    <image x="50%-30" y="50%-55" height="50" width="59" href="main-complication-heart.png" pointer-events="visible" />
+  <svg id="heartRate" class="main-complication" pointer-events="visible">
+    <image x="50%-30" y="50%-55" height="50" width="59" href="main-complication-heart.png" />
     <text id="heartRate-text" x="50%" y="50%+45" text-anchor="middle" text-length="3" font-weight="bold" font-size="40"
-      fill="#ffd800" pointer-events="visible">--</text>
-  </g>
+      fill="#ffd800">--</text>
+  </svg>
 
-  <g id="heartRate-mini" class="mini-complication">
-    <image x="23" y="50%-23" height="20" width="24" href="mini-complication-heart.png" pointer-events="visible" />
+  <svg id="heartRate-mini" class="mini-complication" pointer-events="visible">
+    <image x="23" y="50%-23" height="20" width="24" href="mini-complication-heart.png" />
     <text id="heartRate-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="3" font-weight="bold"
-      font-size="20" fill="white" pointer-events="visible">--</text>
-  </g>
+      font-size="20" fill="white">--</text>
+  </svg>
 
-  <g id="activeMinutes" class="main-complication">
-    <image x="50%-25" y="50%-55" height="50" width="49" href="main-complication-arrows.png" pointer-events="visible" />
+  <svg id="activeMinutes" class="main-complication" pointer-events="visible">
+    <image x="50%-25" y="50%-55" height="50" width="49" href="main-complication-arrows.png" />
     <text id="activeMinutes-text" x="50%" y="50%+45" text-anchor="middle" text-length="3" font-weight="bold"
-      font-size="40" fill="#ffd800" pointer-events="visible">--</text>
-  </g>
+      font-size="40" fill="#ffd800">--</text>
+  </svg>
 
-  <g id="activeMinutes-mini" class="mini-complication">
-    <image x="23" y="50%-23" height="20" width="24" href="mini-complication-arrows.png" pointer-events="visible" />
+  <svg id="activeMinutes-mini" class="mini-complication" pointer-events="visible">
+    <image x="23" y="50%-23" height="20" width="24" href="mini-complication-arrows.png" />
     <text id="activeMinutes-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="3" font-weight="bold"
-      font-size="20" fill="white" pointer-events="visible">--</text>
-  </g>
+      font-size="20" fill="white">--</text>
+  </svg>
 
-  <g id="steps" class="main-complication">
-    <image x="50%-20" y="50%-55" height="50" width="38" href="main-complication-steps.png" pointer-events="visible" />
+  <svg id="steps" class="main-complication" pointer-events="visible">
+    <image x="50%-20" y="50%-55" height="50" width="38" href="main-complication-steps.png" />
     <text id="steps-text" x="50%" y="50%+45" text-anchor="middle" text-length="6" font-weight="bold" font-size="40"
-      fill="#21b1fe" pointer-events="visible">--</text>
-  </g>
+      fill="#21b1fe">--</text>
+  </svg>
 
-  <g id="steps-mini" class="mini-complication">
-    <image x="23" y="50%-23" height="20" width="15" href="mini-complication-steps.png" pointer-events="visible" />
+  <svg id="steps-mini" class="mini-complication" pointer-events="visible">
+    <image x="23" y="50%-23" height="20" width="15" href="mini-complication-steps.png" />
     <text id="steps-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="6" font-weight="bold" font-size="20"
-      fill="white" pointer-events="visible">--</text>
-  </g>
+      fill="white">--</text>
+  </svg>
 
-  <g id="distance" class="main-complication">
-    <image x="50%-20" y="50%-55" height="50" width="38" href="main-complication-distance.png"
-      pointer-events="visible" />
+  <svg id="distance" class="main-complication" pointer-events="visible">
+    <image x="50%-20" y="50%-55" height="50" width="38" href="main-complication-distance.png" />
     <text id="distance-text" x="50%" y="50%+45" text-anchor="middle" text-length="6" font-weight="bold" font-size="40"
-      fill="#ffd800" pointer-events="visible">--</text>
-  </g>
+      fill="#ffd800">--</text>
+  </svg>
 
-  <g id="distance-mini" class="mini-complication">
-    <image x="26" y="50%-23" height="20" width="15" href="mini-complication-distance.png" pointer-events="visible" />
+  <svg id="distance-mini" class="mini-complication" pointer-events="visible">
+    <image x="26" y="50%-23" height="20" width="15" href="mini-complication-distance.png" />
     <text id="distance-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="6" font-weight="bold"
-      font-size="20" fill="white" pointer-events="visible">--</text>
-  </g>
+      font-size="20" fill="white">--</text>
+  </svg>
 
-  <g id="floors" class="main-complication">
-    <image x="50%-25" y="50%-55" height="50" width="50" href="main-complication-floors.png" pointer-events="visible" />
+  <svg id="floors" class="main-complication" pointer-events="visible">
+    <image x="50%-25" y="50%-55" height="50" width="50" href="main-complication-floors.png" />
     <text id="floors-text" x="50%" y="50%+45" text-anchor="middle" text-length="6" font-weight="bold" font-size="40"
-      fill="#ffd800" pointer-events="visible">--</text>
-  </g>
+      fill="#ffd800">--</text>
+  </svg>
 
-  <g id="floors-mini" class="mini-complication">
-    <image x="24" y="50%-23" height="20" width="20" href="mini-complication-floors.png" pointer-events="visible" />
+  <svg id="floors-mini" class="mini-complication" pointer-events="visible">
+    <image x="24" y="50%-23" height="20" width="20" href="mini-complication-floors.png" />
     <text id="floors-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="6" font-weight="bold" font-size="20"
-      fill="white" pointer-events="visible">--</text>
-  </g>
+      fill="white">--</text>
+  </svg>
 
-  <g id="calories" class="main-complication">
-    <image x="50%-23" y="50%-55" height="50" width="47" href="main-complication-calories.png"
-      pointer-events="visible" />
+  <svg id="calories" class="main-complication" pointer-events="visible">
+    <image x="50%-23" y="50%-55" height="50" width="47" href="main-complication-calories.png" />
     <text id="calories-text" x="50%" y="50%+45" text-anchor="middle" text-length="6" font-weight="bold" font-size="40"
-      fill="#ffd800" pointer-events="visible">--</text>
-  </g>
+      fill="#ffd800">--</text>
+  </svg>
 
-  <g id="calories-mini" class="mini-complication">
-    <image x="24" y="50%-23" height="20" width="20" href="mini-complication-calories.png" pointer-events="visible" />
+  <svg id="calories-mini" class="mini-complication" pointer-events="visible">
+    <image x="24" y="50%-23" height="20" width="20" href="mini-complication-calories.png" />
     <text id="calories-mini-text" x="35" y="50%+19" text-anchor="middle" text-length="6" font-weight="bold"
-      font-size="20" fill="white" pointer-events="visible">--</text>
-  </g>
+      font-size="20" fill="white">--</text>
+  </svg>
 
   <!-- DEBUG AXIS -->
   <!-- <line x1="50%" x2="50%" y1="0" y2="100%" fill="white" />

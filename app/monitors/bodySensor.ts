@@ -15,7 +15,9 @@ export const setupBodySensor = <
 ) => {
   if (BodyPresenceSensor && appbit.permissions.granted("access_activity")) {
     const body = new BodyPresenceSensor();
-    display.aodAllowed = display.aodAvailable;
+    if (appbit.permissions.granted("access_aod")) {
+      display.aodAllowed = display.aodAvailable;
+    }
 
     body.addEventListener("reading", (_event) => {
       log(`The device is${body.present ? "" : " not"} on the user's body.`);
