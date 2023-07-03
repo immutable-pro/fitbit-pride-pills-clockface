@@ -7,6 +7,7 @@ import { log } from "./utils";
 
 // Exact copy from companion/index.ts
 type KEYS = "independent-complications";
+const AREAS = ["leftArea", "rightArea"];
 
 const dependentComplicationsListener = <
   T extends string | number,
@@ -75,25 +76,21 @@ export const setupTouchEvents = <
     independentMiniComplicationsListener(state, monitorsRegistry);
   };
 
-  ["pills", ...Complications].forEach((elementId) => {
+  AREAS.forEach((elementId) => {
     (document.getElementById(elementId) as GraphicsElement).addEventListener(
       "click",
       onClickDependentComplication
     );
-    (
-      document.getElementById(`${elementId}-mini`) as GraphicsElement
-    )?.addEventListener("click", onClickDependentComplication);
   });
 
-  [...Complications].forEach((elementId) => {
-    (document.getElementById(elementId) as GraphicsElement).addEventListener(
-      "click",
-      onClickIndependentMainComplication
-    );
-    (
-      document.getElementById(`${elementId}-mini`) as GraphicsElement
-    ).addEventListener("click", onClickIndependentMiniComplication);
-  });
+  (document.getElementById(AREAS[0]) as GraphicsElement).addEventListener(
+    "click",
+    onClickIndependentMiniComplication
+  );
+  (document.getElementById(AREAS[1]) as GraphicsElement).addEventListener(
+    "click",
+    onClickIndependentMainComplication
+  );
 };
 
 export const setupCompanionMessages = <
