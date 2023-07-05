@@ -1,12 +1,8 @@
 import document from "document";
-import { Complication, Complications, State } from "./state";
-import * as messaging from "messaging";
+import { Complication, State } from "./state";
 import { updateDisplay } from "./components/display";
 import { MonitorsRegistry } from "./monitors/monitors";
-import { log } from "./utils";
 
-// Exact copy from companion/index.ts
-type KEYS = "independent-complications";
 const AREAS = ["leftArea", "rightArea"];
 
 const dependentComplicationsListener = <
@@ -91,27 +87,4 @@ export const setupTouchEvents = <
     "click",
     onClickIndependentMainComplication
   );
-};
-
-export const setupCompanionMessages = <
-  T extends string | number,
-  C extends Complication
->(
-  state: State
-) => {
-  messaging.peerSocket.addEventListener("message", (event) => {
-    if (!event?.data?.key) return;
-    log(`Received message: ${JSON.stringify(event.data)}`);
-
-    const key = event.data.key as KEYS;
-    const value = event.data.value;
-
-    switch (key) {
-      case "independent-complications":
-        state.changeComplicationsIndependently = !!value;
-        break;
-      default:
-        throw new Error(`Unknown message key received: ${key}:${value}`);
-    }
-  });
 };

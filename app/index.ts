@@ -1,5 +1,5 @@
 import { setupTime } from "./components/time";
-import { setupCompanionMessages, setupTouchEvents } from "./events";
+import { setupTouchEvents } from "./events";
 import { updateDisplay } from "./components/display";
 import { MonitorsRegistry } from "./monitors/monitors";
 import { HeartRateMonitor } from "./monitors/heartRate";
@@ -11,6 +11,7 @@ import { log } from "./utils";
 import { DistanceMonitor } from "./monitors/distance";
 import { FloorsMonitor } from "./monitors/floors";
 import { CaloriesMonitor } from "./monitors/calories";
+import { setupCompanionMessages } from "./settings";
 
 log("Initializing app...");
 
