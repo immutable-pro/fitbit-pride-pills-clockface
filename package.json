@@ -1,16 +1,16 @@
 {
   "name": "pride-pills",
-  "version": "0.4.3",
+  "version": "0.94.3",
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "@fitbit/sdk": "~6.1.0",
+    "@fitbit/sdk": "~4.2.0",
     "@fitbit/sdk-cli": "^1.7.3",
     "fitbit-sdk-types": "^8.0.3",
     "prettier": "2.8.8"
   },
   "fitbit": {
-    "appUUID": "95fce2a7-da8c-4a2e-ba9d-6c88b5ac8af3",
+    "appUUID": "135305f0-a3b8-40b9-9d60-ddeff596e396",
     "appType": "clockface",
     "appDisplayName": "Pride Pills",
     "iconFile": "resources/icon.png",
@@ -20,8 +20,9 @@
       "access_heart_rate"
     ],
     "buildTargets": [
-      "atlas",
-      "vulcan"
+      "meson",
+      "gemini",
+      "mira"
     ],
     "i18n": {},
     "defaultLanguage": "en-US"
